@@ -1,0 +1,8 @@
+.venv
+.git
+frontend/node_modules
+frontend/.next
+data/raw
+data/backups
+.env
+**/__pycache__

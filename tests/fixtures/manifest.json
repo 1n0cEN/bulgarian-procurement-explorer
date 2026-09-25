@@ -1,0 +1,111 @@
+{
+  "query": {
+    "query": "CY=BGR AND PD>=20230101 AND PD<=20230107",
+    "fields": [
+      "publication-number",
+      "publication-date"
+    ],
+    "limit": 60,
+    "scope": "ALL"
+  },
+  "coverage": "Curated sample: first 12 original Bulgarian F03 award notices encountered in TED search for 1-7 January 2023; not complete national coverage.",
+  "notices": [
+    {
+      "id": "2291-2023",
+      "xml_url": "https://ted.europa.eu/en/notice/2291-2023/xml",
+      "source_url": "https://ted.europa.eu/bg/notice/-/detail/2291-2023",
+      "publication_date": "2023-01-03+01:00",
+      "sha256": "8e40264234b129ba8af368b1a0695348cf30fc599c66a7cc9d0be4cb85e30a26",
+      "retrieved_at": "2026-09-25T13:06:04.856864+00:00"
+    },
+    {
+      "id": "2314-2023",
+      "xml_url": "https://ted.europa.eu/en/notice/2314-2023/xml",
+      "source_url": "https://ted.europa.eu/bg/notice/-/detail/2314-2023",
+      "publication_date": "2023-01-03+01:00",
+      "sha256": "f561adfc9fc32b9aaf9ee5c3b82749bedd26311e2c2348a0323c5b41df76da01",
+      "retrieved_at": "2026-09-25T13:06:05.680471+00:00"
+    },
+    {
+      "id": "2356-2023",
+      "xml_url": "https://ted.europa.eu/en/notice/2356-2023/xml",
+      "source_url": "https://ted.europa.eu/bg/notice/-/detail/2356-2023",
+      "publication_date": "2023-01-03+01:00",
+      "sha256": "80ef3963d873cb8e5ff715c522bb7ff39d180909b5d000766885a05af6cd2290",
+      "retrieved_at": "2026-09-25T13:06:06.493545+00:00"
+    },
+    {
+      "id": "2367-2023",
+      "xml_url": "https://ted.europa.eu/en/notice/2367-2023/xml",
+      "source_url": "https://ted.europa.eu/bg/notice/-/detail/2367-2023",
+      "publication_date": "2023-01-03+01:00",
+      "sha256": "47e20fc3699f957c5964fd57a2b8489422663c160e74491f22058de1dc769473",
+      "retrieved_at": "2026-09-25T13:06:08.114613+00:00"
+    },
+    {
+      "id": "2368-2023",
+      "xml_url": "https://ted.europa.eu/en/notice/2368-2023/xml",
+      "source_url": "https://ted.europa.eu/bg/notice/-/detail/2368-2023",
+      "publication_date": "2023-01-03+01:00",
+      "sha256": "b6606807a880d691e1d759ffbce5952e8b713099bdc22245af2a8e94c5193771",
+      "retrieved_at": "2026-09-25T13:06:09.016708+00:00"
+    },
+    {
+      "id": "2386-2023",
+      "xml_url": "https://ted.europa.eu/en/notice/2386-2023/xml",
+      "source_url": "https://ted.europa.eu/bg/notice/-/detail/2386-2023",
+      "publication_date": "2023-01-03+01:00",
+      "sha256": "71625388a2a7f3590edd1b8c28807e9ff4925dfb2ec76848f630615bd767f969",
+      "retrieved_at": "2026-09-25T13:06:09.925677+00:00"
+    },
+    {
+      "id": "2510-2023",
+      "xml_url": "https://ted.europa.eu/en/notice/2510-2023/xml",
+      "source_url": "https://ted.europa.eu/bg/notice/-/detail/2510-2023",
+      "publication_date": "2023-01-03+01:00",
+      "sha256": "683dfbff1e3619f1001bf001fdc6296848f73f66e96627b71203229ee6d59038",
+      "retrieved_at": "2026-09-25T13:06:12.506468+00:00"
+    },
+    {
+      "id": "2666-2023",
+      "xml_url": "https://ted.europa.eu/en/notice/2666-2023/xml",
+      "source_url": "https://ted.europa.eu/bg/notice/-/detail/2666-2023",
+      "publication_date": "2023-01-03+01:00",
+      "sha256": "65fd113966ab131e81cd2964b0479ce15a3f12b8b208f6be0cff136796d348e0",
+      "retrieved_at": "2026-09-25T13:06:14.088100+00:00"
+    },
+    {
+      "id": "2671-2023",
+      "xml_url": "https://ted.europa.eu/en/notice/2671-2023/xml",
+      "source_url": "https://ted.europa.eu/bg/notice/-/detail/2671-2023",
+      "publication_date": "2023-01-03+01:00",
+      "sha256": "ccd4f50db3d91ef22ea9533f5dbbc376a5e59ff723f17adc0f5bdd5ce4a6ecd3",
+      "retrieved_at": "2026-09-25T13:06:14.863926+00:00"
+    },
+    {
+      "id": "2767-2023",
+      "xml_url": "https://ted.europa.eu/en/notice/2767-2023/xml",
+      "source_url": "https://ted.europa.eu/bg/notice/-/detail/2767-2023",
+      "publication_date": "2023-01-03+01:00",
+      "sha256": "5ac0588575d746648f692b1990f5f02912cca7a40d53e63eb6792899d01f51a5",
+      "retrieved_at": "2026-09-25T13:06:16.447907+00:00"
+    },
+    {
+      "id": "2917-2023",
+      "xml_url": "https://ted.europa.eu/en/notice/2917-2023/xml",
+      "source_url": "https://ted.europa.eu/bg/notice/-/detail/2917-2023",
+      "publication_date": "2023-01-03+01:00",
+      "sha256": "2c9354cf9728b9327178ff0b9cbcef2846fccd979bd703f2e36a452c94685acb",
+      "retrieved_at": "2026-09-25T13:06:18.090525+00:00"
+    },
+    {
+      "id": "2935-2023",
+      "xml_url": "https://ted.europa.eu/en/notice/2935-2023/xml",
+      "source_url": "https://ted.europa.eu/bg/notice/-/detail/2935-2023",
+      "publication_date": "2023-01-03+01:00",
+      "sha256": "5649744be723f80d18775df3506e842da96459fb2d0d4730098b770d4e900b81",
+      "retrieved_at": "2026-09-25T13:06:18.918859+00:00"
+    }
+  ],
+  "fixture_notice": "Sanitized derived test fixtures; not raw downloads. Contact/address and unused prose removed. Never import into a production dataset."
+}
