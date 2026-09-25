@@ -79,7 +79,9 @@ class Record(BaseModel):
 
 def party(node: Element, fallback: str) -> Party:
     identifier = text(node, "NATIONALID")
-    country = attr(node, "COUNTRY", "VALUE") or "BG"
+    country = attr(node, "COUNTRY", "VALUE")
+    if not country:
+        raise ValueError("Party country not reported; cannot safely resolve identity")
     return Party(
         id=identity("ted", country, identifier or fallback),
         official_identifier=identifier,

@@ -19,7 +19,7 @@ def records(db: Session) -> list[dict]:
         .limit(10001)
     ).all()
     if len(rows) > 10000:
-        raise HTTPException(503, "Cohort exceeds the verified 10,000-contract query budget")
+        raise HTTPException(503, "Cohort exceeds the configured 10,000-contract query limit")
     links: dict[str, list[dict]] = defaultdict(list)
     for link, supplier in db.execute(select(ContractSupplier, Supplier).join(Supplier)):
         links[link.contract_id].append({"id": supplier.id, "name": supplier.name})
@@ -95,7 +95,7 @@ def concentration(rows: list[dict]) -> dict:
     return {
         "name": "Supplier share of sole-supplier award value",
         "algorithm_version": "share-1.0.0",
-        "formula": "sole-supplier value / eligible authority value in the same currency × 100",
+        "formula": "sole-supplier value / eligible selected-record value in the same currency × 100",
         "time_window": "Selected indexed records",
         "sample_size": len(eligible),
         "threshold": None,

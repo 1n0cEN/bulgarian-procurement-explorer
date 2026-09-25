@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { bgnToEur, sourceMoney } from "../lib/currency";
 
 type Party = {
   id: string;
@@ -123,8 +124,13 @@ type Procurement = {
 
 function money(value: string | null, currency: string | null) {
   if (value === null || !currency) return "Not reported";
-  const [whole, fraction = ""] = value.split(".");
-  return `${BigInt(whole).toLocaleString("en-GB")}${fraction && /[1-9]/.test(fraction) ? "." + fraction.replace(/0+$/, "").padEnd(2, "0") : ""} ${currency}`;
+  if (currency !== "BGN") return sourceMoney(value, currency);
+  return (
+    <span className="currency-display">
+      <span>{sourceMoney(bgnToEur(value), "EUR")}</span>
+      <small>EUR equivalent · source: {sourceMoney(value, "BGN")}</small>
+    </span>
+  );
 }
 function dateLabel(value: string | null) {
   return value
@@ -171,15 +177,24 @@ function State({ error }: { error?: string }) {
   );
 }
 function Coverage() {
+  const { data: status, error } = useApi<Status>("status");
   return (
     <aside className="coverage">
       <span className="dot" aria-hidden="true" />
       <strong>Historical sample</strong>
       <span>
-        12 TED notices · Published 3 January 2023 · Partial coverage, not all
-        Bulgarian spending
+        {status
+          ? `${status.notices} indexed TED notices · Published ${dateLabel(status.publication_from)}–${dateLabel(status.publication_to)}`
+          : error
+            ? "Coverage could not be checked"
+            : "Checking coverage…"}{" "}
+        · Partial historical sample, not all Bulgarian spending
       </span>
       <Link href="/sources">About the dataset ↗</Link>
+      <span>
+        EUR equivalents use €1 = BGN 1.95583. Historical BGN source values are
+        preserved. <Link href="/methodology">Currency method ↗</Link>
+      </span>
     </aside>
   );
 }
@@ -330,50 +345,57 @@ function Trends({
         Only months represented in the selected records. Missing months do not
         mean zero activity.
       </p>
-      <table>
-        <caption>
-          Monthly award totals — links open underlying contracts
-        </caption>
-        <thead>
-          <tr>
-            <th>Month</th>
-            <th>Contracts</th>
-            <th>Awarded value</th>
-          </tr>
-        </thead>
-        <tbody>
-          {stats.months.map((m) => (
-            <tr key={m.period}>
-              <td>
-                <Link
-                  href={`/search?${new URLSearchParams({ ...(authority ? { authority } : {}), ...(supplier ? { supplier } : {}), from_date: m.period + "-01", to_date: m.period + "-" + new Date(Number(m.period.slice(0, 4)), Number(m.period.slice(5, 7)), 0).getDate() })}`}
-                >
-                  {m.period}
-                </Link>
-              </td>
-              <td>{m.contracts}</td>
-              <td>
-                {Object.entries(m.awarded_value).map(([c, v]) => (
-                  <div key={c} className="bar-row">
-                    <span>{money(v, c)}</span>
-                    <meter
-                      aria-label={`${m.period} ${c} award value`}
-                      value={Number(v)}
-                      min={0}
-                      max={Math.max(
-                        1,
-                        ...stats.months.map((x) =>
-                          Number(x.awarded_value[c] || 0),
-                        ),
-                      )}
-                    />
-                  </div>
-                ))}
-              </td>
+      <div
+        className="table-wrap"
+        tabIndex={0}
+        role="region"
+        aria-label="Monthly award values"
+      >
+        <table>
+          <caption>
+            Monthly award totals — links open underlying contracts
+          </caption>
+          <thead>
+            <tr>
+              <th>Month</th>
+              <th>Contracts</th>
+              <th>Awarded value</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {stats.months.map((m) => (
+              <tr key={m.period}>
+                <td>
+                  <Link
+                    href={`/search?${new URLSearchParams({ ...(authority ? { authority } : {}), ...(supplier ? { supplier } : {}), from_date: m.period + "-01", to_date: m.period + "-" + new Date(Number(m.period.slice(0, 4)), Number(m.period.slice(5, 7)), 0).getDate() })}`}
+                  >
+                    {m.period}
+                  </Link>
+                </td>
+                <td>{m.contracts}</td>
+                <td>
+                  {Object.entries(m.awarded_value).map(([c, v]) => (
+                    <div key={c} className="bar-row">
+                      <span>{money(v, c)}</span>
+                      <meter
+                        aria-label={`${m.period} ${c} award value`}
+                        value={Number(v)}
+                        min={0}
+                        max={Math.max(
+                          1,
+                          ...stats.months.map((x) =>
+                            Number(x.awarded_value[c] || 0),
+                          ),
+                        )}
+                      />
+                    </div>
+                  ))}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </section>
   );
 }
@@ -477,7 +499,8 @@ function SearchPage({ query }: { query: string }) {
     <div className="page">
       <Heading eyebrow="THE RECORDS" title="Explore contracts">
         Search the indexed award records. Values refer to contract awards,
-        excluding VAT.
+        excluding VAT. Value filters and CSV exports use the original source
+        currency; EUR equivalents are calculated separately.
       </Heading>
       <Coverage />
       {query === null ? <State /> : <SearchResults key={query} query={query} />}
@@ -485,7 +508,7 @@ function SearchPage({ query }: { query: string }) {
   );
 }
 function SearchResults({ query }: { query: string }) {
- const router=useRouter();
+  const router = useRouter();
   const current = new URLSearchParams(query);
   const result = useApi<Search>(`contracts?${query}`);
   const orgs = useApi<{ items: Party[] }>("organizations");
@@ -859,23 +882,25 @@ function ProfilePage({ kind, id }: { kind: string; id: string }) {
             </tbody>
           </table>
         </section>
-        <section className="panel">
-          <h2>Sole-supplier value shares</h2>
-          <p>{p.concentration.formula}</p>
-          <p className="fine">
-            Eligible contracts: {p.concentration.sample_size}; excluded:{" "}
-            {p.concentration.excluded_contracts}. Selected sample only.
-          </p>
-          {p.concentration.suppliers.map((s) => (
-            <p key={s.id}>
-              <Link href={`/suppliers/${s.id}`}>{s.name}</Link> —{" "}
-              {Object.entries(s.share_percent)
-                .map(([c, v]) => `${v ?? "Undefined"}% (${c})`)
-                .join(", ")}
+        {kind === "organizations" && (
+          <section className="panel">
+            <h2>Sole-supplier value shares</h2>
+            <p>{p.concentration.formula}</p>
+            <p className="fine">
+              Eligible contracts: {p.concentration.sample_size}; excluded:{" "}
+              {p.concentration.excluded_contracts}. Selected sample only.
             </p>
-          ))}
-          <p className="fine">{p.concentration.limitations}</p>
-        </section>
+            {p.concentration.suppliers.map((s) => (
+              <p key={s.id}>
+                <Link href={`/suppliers/${s.id}`}>{s.name}</Link> —{" "}
+                {Object.entries(s.share_percent)
+                  .map(([c, v]) => `${v ?? "Undefined"}% (${c})`)
+                  .join(", ")}
+              </p>
+            ))}
+            <p className="fine">{p.concentration.limitations}</p>
+          </section>
+        )}
       </div>
     </div>
   );
@@ -1003,10 +1028,26 @@ function Methodology() {
         This explorer makes public procurement records easier to inspect. It
         does not determine whether anyone has acted improperly.
       </p>
+      <p>
+        Source facts come from TED, the EU’s official procurement publication
+        service. Totals, EUR equivalents and indicators are calculated by this
+        independent project; they are not government findings.
+      </p>
+      <p>
+        Bulgaria adopted the euro on 1 January 2026. See{" "}
+        <a href="https://eur-lex.europa.eu/eli/reg/2025/1409/oj/eng">
+          Council Regulation (EU) 2025/1409
+        </a>{" "}
+        and the{" "}
+        <a href="https://bnb.bg/AboutUs/AUEurosystem/AUAccessionToTheEuroArea/AUAEFIQuestionsAndAnswers/POAEFI_QUESTIONSANDANS11_BG">
+          Bulgarian National Bank’s conversion and rounding rules
+        </a>
+        .
+      </p>
       {[
         [
           "01 / What a total means",
-          "Monetary totals sum unique awarded contracts, once per stable source contract identity, separately for each original currency. They exclude VAT. They are not actual payments. No currency conversion is performed. Missing values are excluded, not replaced with zero.",
+          "Monetary totals sum unique awarded contracts, once per stable source contract identity, separately for each original currency. They exclude VAT. They are not actual payments. EUR equivalents divide the original BGN value by exactly 1.95583, rounded to the nearest cent (half up). These are project calculations, not euro amounts reported in the historical notices. Each total is converted after summing original values; it can differ by cents from summing rounded row equivalents. Other currencies remain separate. Filters and CSV exports use source values and currencies. Missing values are excluded, not replaced with zero.",
         ],
         [
           "02 / What is covered",

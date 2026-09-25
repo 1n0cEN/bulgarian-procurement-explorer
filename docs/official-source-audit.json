@@ -1,0 +1,193 @@
+{
+  "checked_at": "2026-09-25T19:09:56.644229+00:00",
+  "scope": "All currently indexed records; official TED publication accuracy, not real-world delivery or payments",
+  "checks": 1015,
+  "failures": [],
+  "notices": 12,
+  "award_outcomes": 15,
+  "contracts": 11,
+  "original_totals": {
+    "BGN": "5367011.180000"
+  },
+  "derived_eur_total": "2744109.24",
+  "sources": [
+    {
+      "notice": "2291-2023",
+      "xml_url": "https://ted.europa.eu/en/notice/2291-2023/xml",
+      "rendered_url": "https://ted.europa.eu/en/notice/2291-2023/html",
+      "sha256": "2ff09acb55b5d486e85f57e2f3cfcde3f90bdc18fa446ce6d10e12964c086f1e",
+      "publication_date": "2023-01-03",
+      "outcomes": 1,
+      "contracts": [
+        {
+          "number": "73867",
+          "value": "1650.00",
+          "currency": "BGN"
+        }
+      ]
+    },
+    {
+      "notice": "2314-2023",
+      "xml_url": "https://ted.europa.eu/en/notice/2314-2023/xml",
+      "rendered_url": "https://ted.europa.eu/en/notice/2314-2023/html",
+      "sha256": "bdc62f6fa9f1a9ee7d819e713f004981efced9bc5e8ecb843e97625e355f6c8d",
+      "publication_date": "2023-01-03",
+      "outcomes": 1,
+      "contracts": [
+        {
+          "number": "73824",
+          "value": "71568.00",
+          "currency": "BGN"
+        }
+      ]
+    },
+    {
+      "notice": "2356-2023",
+      "xml_url": "https://ted.europa.eu/en/notice/2356-2023/xml",
+      "rendered_url": "https://ted.europa.eu/en/notice/2356-2023/html",
+      "sha256": "e72da77bb69efd8a114731b8718ca95419ace0e8f7ecd9c94dd0213941d40d17",
+      "publication_date": "2023-01-03",
+      "outcomes": 1,
+      "contracts": []
+    },
+    {
+      "notice": "2367-2023",
+      "xml_url": "https://ted.europa.eu/en/notice/2367-2023/xml",
+      "rendered_url": "https://ted.europa.eu/en/notice/2367-2023/html",
+      "sha256": "8192ac28e05f9de2f1668fc8e096bd6ae6febb7c788871cff5e269063896d313",
+      "publication_date": "2023-01-03",
+      "outcomes": 1,
+      "contracts": []
+    },
+    {
+      "notice": "2368-2023",
+      "xml_url": "https://ted.europa.eu/en/notice/2368-2023/xml",
+      "rendered_url": "https://ted.europa.eu/en/notice/2368-2023/html",
+      "sha256": "25e52d1aaadf40e1086babef92d32b762da46b5e7c3f09b371c8395fbddd17b9",
+      "publication_date": "2023-01-03",
+      "outcomes": 1,
+      "contracts": [
+        {
+          "number": "73837",
+          "value": "242600.00",
+          "currency": "BGN"
+        }
+      ]
+    },
+    {
+      "notice": "2386-2023",
+      "xml_url": "https://ted.europa.eu/en/notice/2386-2023/xml",
+      "rendered_url": "https://ted.europa.eu/en/notice/2386-2023/html",
+      "sha256": "158900fa85497309116c2e41fc4072c075313bef0c7606503752f5950cef1fa5",
+      "publication_date": "2023-01-03",
+      "outcomes": 1,
+      "contracts": [
+        {
+          "number": "73843",
+          "value": "1831.18",
+          "currency": "BGN"
+        }
+      ]
+    },
+    {
+      "notice": "2510-2023",
+      "xml_url": "https://ted.europa.eu/en/notice/2510-2023/xml",
+      "rendered_url": "https://ted.europa.eu/en/notice/2510-2023/html",
+      "sha256": "ea8b049c8e4c42429a9e311e158ed689dab1746b523eba50fb6152641776d2c6",
+      "publication_date": "2023-01-03",
+      "outcomes": 4,
+      "contracts": [
+        {
+          "number": "73841",
+          "value": "16800.00",
+          "currency": "BGN"
+        },
+        {
+          "number": "73842",
+          "value": "35528.00",
+          "currency": "BGN"
+        },
+        {
+          "number": "73844",
+          "value": "5516.00",
+          "currency": "BGN"
+        },
+        {
+          "number": "73846",
+          "value": "14668.00",
+          "currency": "BGN"
+        }
+      ]
+    },
+    {
+      "notice": "2666-2023",
+      "xml_url": "https://ted.europa.eu/en/notice/2666-2023/xml",
+      "rendered_url": "https://ted.europa.eu/en/notice/2666-2023/html",
+      "sha256": "1f173219976c497d2f55f70ff2d7238728274081c90b3839e1cbede0762a1e9f",
+      "publication_date": "2023-01-03",
+      "outcomes": 1,
+      "contracts": [
+        {
+          "number": "73325",
+          "value": "4851000.00",
+          "currency": "BGN"
+        }
+      ]
+    },
+    {
+      "notice": "2671-2023",
+      "xml_url": "https://ted.europa.eu/en/notice/2671-2023/xml",
+      "rendered_url": "https://ted.europa.eu/en/notice/2671-2023/html",
+      "sha256": "8e42186d56f80765b9f65eb06e95f3d48145d3b164f7c6fab737c31ca083d56f",
+      "publication_date": "2023-01-03",
+      "outcomes": 1,
+      "contracts": []
+    },
+    {
+      "notice": "2767-2023",
+      "xml_url": "https://ted.europa.eu/en/notice/2767-2023/xml",
+      "rendered_url": "https://ted.europa.eu/en/notice/2767-2023/html",
+      "sha256": "019bca2c57fac61bb685093203fbcc788e2533896a9f37bf6c0fae70989f60a6",
+      "publication_date": "2023-01-03",
+      "outcomes": 1,
+      "contracts": [
+        {
+          "number": "73774",
+          "value": "78000.00",
+          "currency": "BGN"
+        }
+      ]
+    },
+    {
+      "notice": "2917-2023",
+      "xml_url": "https://ted.europa.eu/en/notice/2917-2023/xml",
+      "rendered_url": "https://ted.europa.eu/en/notice/2917-2023/html",
+      "sha256": "b6da76f4781886eadf030b4803cb95b9a2752f2a5aff90dd2253d51268870b5f",
+      "publication_date": "2023-01-03",
+      "outcomes": 1,
+      "contracts": []
+    },
+    {
+      "notice": "2935-2023",
+      "xml_url": "https://ted.europa.eu/en/notice/2935-2023/xml",
+      "rendered_url": "https://ted.europa.eu/en/notice/2935-2023/html",
+      "sha256": "842546196f0b38663ea09c47f1d9e9e71fad9254b8e436c86a0c871843f6defa",
+      "publication_date": "2023-01-03",
+      "outcomes": 1,
+      "contracts": [
+        {
+          "number": "73864",
+          "value": "47850.00",
+          "currency": "BGN"
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Historical purposive sample, not national or current coverage",
+    "No later amendments or payment records checked",
+    "TED is an official EU publication service; entity registration not separately checked in Bulgarian registers",
+    "Published notices may themselves contain errors",
+    "Statistical observations are project calculations, not governmental findings"
+  ]
+}

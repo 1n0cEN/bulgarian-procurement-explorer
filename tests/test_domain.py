@@ -1,5 +1,6 @@
 from decimal import Decimal
 from pathlib import Path
+from xml.etree import ElementTree as ET
 
 import pytest
 from defusedxml.common import DTDForbidden
@@ -113,3 +114,11 @@ def test_filters_validate_currency_and_ranges():
     with pytest.raises(ValueError):
         Filters(currency="EUR", min_value="10", max_value="1")
     assert Filters(currency="EUR", min_value="0").min_value == 0
+
+
+def test_missing_supplier_country_is_not_invented():
+    root = ET.parse("tests/fixtures/2291-2023.xml").getroot()
+    supplier = root.find(".//{*}ADDRESS_CONTRACTOR")
+    supplier.remove(supplier.find("{*}COUNTRY"))
+    with pytest.raises(ValueError, match="Party country not reported"):
+        transform(ET.tostring(root))

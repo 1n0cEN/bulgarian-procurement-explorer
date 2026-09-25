@@ -215,7 +215,7 @@ h1 em {
   font:
     80px/1 Georgia,
     serif;
-  color: #a7b99d;
+  color: #58724e;
   margin-top: 25px;
 }
 .page {
@@ -727,3 +727,7 @@ footer > div:nth-child(2) {
     transition: none !important;
   }
 }
+
+.currency-display { display: block; }
+.currency-display > small { display: block; font: 12px/1.5 Arial, sans-serif; color: var(--muted); }
+.coverage { flex-wrap: wrap; }

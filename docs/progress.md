@@ -16,3 +16,15 @@ Browser checks failed: local API requests timed out. Local API and frontend proc
 Relocation requested to Documents/BG project but not completed: enumeration encountered a Windows permission error on .pytest_cache. Application source remains here; protected synced sources are a separate sibling directory. User subsequently requested a GitHub repository. Publish only tracked source and sanitized fixtures, never .env, raw downloads or caches.
 
 Next: verify full Compose startup; resolve browser failures; demonstrate restore; complete requirement dispositions and release report. Do not claim completion before evidence is recorded.
+
+## Official-source audit update — 25 September 2026
+
+Full Compose now runs successfully at localhost:3000. The source audit independently fetched all 12 original TED XML notices and rendered official pages. All 1,015 comparisons passed: 15 outcomes, 11 contracts, original BGN 5,367,011.18; presentational EUR equivalent 2,744,109.24. See validation-report.md and official-source-audit.json for complete scope, links and limitations.
+
+EUR display preserves original source BGN amounts, uses the full official rate and exact integer rounding, and clearly distinguishes derived equivalents from source facts. Coverage badges now use live database metadata. Supplier-profile shares were removed to avoid a misleading self-denominator; authority and selected-cohort share arithmetic was independently reconciled. Missing party countries are rejected rather than invented.
+
+All 37 existing backend/PostgreSQL tests passed in an isolated bg_test container run; the added missing-country regression also passed. Currency tests, Ruff, mypy, TypeScript, ESLint and Docker builds passed. Initial browser verification uncovered a test locator mismatch and a real contrast issue; both were corrected before the final rerun. Prior notes about failed local API startup are historical and superseded.
+
+No public hosting deployment or local relocation was performed during this audit. Remaining release work from the original build includes backup restore, CI, comprehensive operational/security review and remaining requirements; the source audit does not certify production readiness.
+
+Final browser rerun: all four Chromium journeys passed, including seven-page axe checks, keyboard focus and mobile overflow checks. Screenshots inspected. A mobile monthly-table overflow discovered in verification was fixed with an accessible scrolling region.

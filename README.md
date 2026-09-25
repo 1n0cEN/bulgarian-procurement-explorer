@@ -6,16 +6,18 @@ Work in progress: an independent explorer of Bulgarian procurement award records
 
 - Official sample retrieved and imported into PostgreSQL: 12 notices, 15 award outcomes, 11 contracts, BGN 5,367,011.18 reported award value excluding VAT.
 - Repeated live import: 12 unchanged notices, no duplicates.
-- 37 Python/domain and real-PostgreSQL tests passed during development.
+- 37 Python/domain and real-PostgreSQL tests passed, plus a new missing-country regression test and two exact-currency test cases.
 - Next.js production build and both application Docker image builds passed.
-- Browser journeys failed because the local API was not responding; the full Compose startup and browser verification remain unfinished.
+- All four Chromium browser journeys passed, including automated accessibility and mobile checks.
+- Full local Compose startup verified. Official-source audit: 1,015 comparisons passed across all 12 notices and 11 contracts. [Validation report](docs/validation-report.md).
+- The UI displays EUR equivalents at EUR 1 = BGN 1.95583, retaining original BGN values; filters and exports use source currencies.
 - Backup restoration, comprehensive security/accessibility verification, CI, and the remaining product documentation are not complete. This is not a production-ready release. Nothing has been deployed publicly.
 
 ## Structure
 
 `frontend/`: Next.js/React/TypeScript website. `backend/`: FastAPI read API and SQLAlchemy models. `pipeline/`: strict TED XML adapter and transactional importer. `database/`: Alembic migration. `tests/`: deterministic sanitized fixtures and PostgreSQL tests. `infrastructure/`: Docker configuration. `docs/`: progress and available evidence.
 
-## Intended local startup (full sequence not yet verified)
+## Local startup
 
 Requires Docker Desktop running Linux containers.
 
